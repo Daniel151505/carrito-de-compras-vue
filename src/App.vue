@@ -5,8 +5,8 @@
     const guitarras = ref([]);
 
     onMounted(() => {
-        guitarras.value= db
-    }),
+        guitarras.value = db
+    })
 
 </script>
 
