@@ -1,5 +1,13 @@
 <script setup>
-    const hola = "Hola Mundo"
+    import { ref, reactive } from "vue";
+    import { db } from './data/guitarras'
+
+    const state = reactive({
+        guitarras: [1,2,3]
+    })
+
+    console.log(state.guitarras)
+
 </script>
 
 <template>
