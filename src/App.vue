@@ -19,7 +19,9 @@ const agregarCarrito = (guitarra) => {
 </script>
 
 <template>
-  <HeaderVue />
+  <HeaderVue 
+    @carrito="carrito"
+  />
 
   <main class="container-xl mt-5">
     <h2 class="text-center">Nuestra Colección</h2>
