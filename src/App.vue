@@ -7,9 +7,11 @@ import HeaderVue from "./components/Header.vue";
 
 const guitarras = ref([]);
 const carrito = ref([]);
+const guitarra = ref({});
 
 onMounted(() => {
   guitarras.value = db;
+  guitarra.value = db[3];
 });
 
 const agregarCarrito = (guitarra) => {
@@ -44,8 +46,10 @@ const incrementarCantidad = (id) => {
 <template>
   <HeaderVue
     :carrito="carrito"
+    :guitarra="guitarra"
     @incrementar-cantidad="incrementarCantidad"
     @decrementar-cantidad="decrementarCantidad"
+    @agregar-carrito="agregarCarrito"
   />
 
   <main class="container-xl mt-5">
