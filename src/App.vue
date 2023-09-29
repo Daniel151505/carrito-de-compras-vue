@@ -12,7 +12,16 @@ const guitarra = ref({});
 onMounted(() => {
   guitarras.value = db;
   guitarra.value = db[3];
+
+  const carritoStorage = localStorage.getItem("carrito");
+  if (carritoStorage) {
+    carrito.value = JSON.parse(carritoStorage);
+  }
 });
+
+const guardarLocalStorage = () => {
+  localStorage.setItem("carrito", JSON.stringify(carrito.value));
+};
 
 const agregarCarrito = (guitarra) => {
   const existeCarrito = carrito.value.findIndex(
@@ -24,6 +33,8 @@ const agregarCarrito = (guitarra) => {
     guitarra.cantidad = 1;
     carrito.value.push(guitarra);
   }
+
+  guardarLocalStorage();
 };
 
 const decrementarCantidad = (id) => {
@@ -43,8 +54,8 @@ const eliminarProducto = (id) => {
 };
 
 const vaciarCarrito = () => {
-  carrito.value = []
-}
+  carrito.value = [];
+};
 </script>
 
 <template>
