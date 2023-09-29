@@ -15,9 +15,9 @@ onMounted(() => {
 });
 
 const agregarCarrito = (guitarra) => {
-  const existeCarrito = carrito.value.findIndex((producto) => {
-    producto.id === guitarra.id;
-  });
+  const existeCarrito = carrito.value.findIndex(
+    (producto) => producto.id === guitarra.id
+  );
   if (existeCarrito >= 0) {
     carrito.value[existeCarrito].cantidad++;
   } else {
@@ -27,19 +27,19 @@ const agregarCarrito = (guitarra) => {
 };
 
 const decrementarCantidad = (id) => {
-  const index = carrito.value.findIndex((producto) => {
-    producto.id === guitarra.id;
-  });
+  const index = carrito.value.findIndex((producto) => producto.id === id);
   if (carrito.value[index].cantidad <= 1) return;
   carrito.value[index].cantidad--;
 };
 
 const incrementarCantidad = (id) => {
-  const index = carrito.value.findIndex((producto) => {
-    producto.id === guitarra.id;
-  });
+  const index = carrito.value.findIndex((producto) => producto.id === id);
   if (carrito.value[index].cantidad >= 5) return;
   carrito.value[index].cantidad++;
+};
+
+const eliminarProducto = (id) => {
+  carrito.value = carrito.value.filter((producto) => producto.id !== id);
 };
 </script>
 
@@ -50,6 +50,7 @@ const incrementarCantidad = (id) => {
     @incrementar-cantidad="incrementarCantidad"
     @decrementar-cantidad="decrementarCantidad"
     @agregar-carrito="agregarCarrito"
+    @eliminar-producto="eliminarProducto"
   />
 
   <main class="container-xl mt-5">
