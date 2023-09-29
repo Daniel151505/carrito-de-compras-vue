@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, onMounted } from "vue";
+import { ref, reactive, onMounted, watch } from "vue";
 import { db } from "./data/guitarras";
 import GuitarraVue from "./components/Guitarra.vue";
 import FooterVue from "./components/Footer.vue";
@@ -8,6 +8,16 @@ import HeaderVue from "./components/Header.vue";
 const guitarras = ref([]);
 const carrito = ref([]);
 const guitarra = ref({});
+
+watch(
+  carrito,
+  () => {
+    guardarLocalStorage();
+  },
+  {
+    deep: true,
+  }
+);
 
 onMounted(() => {
   guitarras.value = db;
