@@ -38,7 +38,9 @@ const agregarCarrito = (guitarra) => {
     (producto) => producto.id === guitarra.id
   );
   if (existeCarrito >= 0) {
-    carrito.value[existeCarrito].cantidad++;
+    if (carrito.value[existeCarrito].cantidad <= 4) {
+      carrito.value[existeCarrito].cantidad++;
+    }
   } else {
     guitarra.cantidad = 1;
     carrito.value.push(guitarra);
@@ -85,6 +87,7 @@ const vaciarCarrito = () => {
     <div class="row mt-5">
       <GuitarraVue
         v-for="guitarra in guitarras"
+        :key="guitarra.id"
         :guitarra="guitarra"
         @agregar-carrito="agregarCarrito"
       />
