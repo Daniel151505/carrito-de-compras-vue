@@ -25,8 +25,8 @@
   background-color: white;
   padding: 10px;
   height: fit-content;
-  min-width: 350px;
-  width: fit-content;
+  min-width: 360px;
+  width: -webkit-fill-available;
   top: 100%;
   right: 0;
   left: unset;

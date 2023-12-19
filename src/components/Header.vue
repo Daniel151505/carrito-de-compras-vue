@@ -37,85 +37,87 @@ const totalPagar = computed(() => {
             <img class="img-fluid" src="/img/logo.svg" alt="imagen logo" />
           </a>
         </div>
-        <nav
-          class="col-md-6 a mt-5 d-flex align-items-start justify-content-end"
-        >
-          <div class="carrito">
-            <img
-              class="img-fluid"
-              src="/img/carrito.png"
-              alt="imagen carrito"
-            />
+        <div class="col-4">
+          <nav
+            class="col-md-6 mt-3 d-flex align-items-center justify-content-end"
+          >
+            <div class="carrito">
+              <img
+                class="img-fluid"
+                src="/img/carrito.png"
+                alt="imagen carrito"
+              />
 
-            <div id="carrito" class="bg-white p-3">
-              <p v-if="carrito.length === 0" class="text-center m-0">
-                El carrito esta vacio
-              </p>
-              <div v-else>
-                <table class="w-100 table">
-                  <thead>
-                    <tr>
-                      <th>Imagen</th>
-                      <th>Nombre</th>
-                      <th>Precio</th>
-                      <th>Cantidad</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="producto in carrito" :key="producto.id">
-                      <td>
-                        <img
-                          class="img-fluid"
-                          :src="'/img/' + producto.imagen + '.jpg'"
-                          :alt="'imagen guitarra' + producto.nombre"
-                        />
-                      </td>
-                      <td>{{ producto.nombre }}</td>
-                      <td class="fw-bold">${{ producto.precio }}</td>
-                      <td class="flex align-items-start gap-4">
-                        <button
-                          type="button"
-                          class="btn btn-dark"
-                          @click="$emit('decrementar-cantidad', producto.id)"
-                        >
-                          -
-                        </button>
-                        {{ producto.cantidad }}
-                        <button
-                          type="button"
-                          class="btn btn-dark"
-                          @click="$emit('incrementar-cantidad', producto.id)"
-                        >
-                          +
-                        </button>
-                      </td>
-                      <td>
-                        <button
-                          class="btn btn-danger"
-                          type="button"
-                          @click="$emit('eliminar-producto', producto.id)"
-                        >
-                          X
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <p class="text-end">
-                  Total pagar: <span class="fw-bold">${{ totalPagar }}</span>
+              <div id="carrito" class="w-full bg-white p-3">
+                <p v-if="carrito.length === 0" class="text-center m-0">
+                  El carrito esta vacio
                 </p>
-                <button
-                  class="btn btn-dark w-100 mt-3 p-2"
-                  @click="$emit('vaciar-carrito')"
-                >
-                  Vaciar Carrito
-                </button>
+                <div v-else>
+                  <table class="w-100 table">
+                    <thead>
+                      <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="producto in carrito" :key="producto.id">
+                        <td>
+                          <img
+                            class="img-fluid"
+                            :src="'/img/' + producto.imagen + '.jpg'"
+                            :alt="'imagen guitarra' + producto.nombre"
+                          />
+                        </td>
+                        <td>{{ producto.nombre }}</td>
+                        <td class="fw-bold">${{ producto.precio }}</td>
+                        <td class="flex align-items-start gap-4">
+                          <button
+                            type="button"
+                            class="btn btn-dark"
+                            @click="$emit('decrementar-cantidad', producto.id)"
+                          >
+                            -
+                          </button>
+                          {{ producto.cantidad }}
+                          <button
+                            type="button"
+                            class="btn btn-dark"
+                            @click="$emit('incrementar-cantidad', producto.id)"
+                          >
+                            +
+                          </button>
+                        </td>
+                        <td>
+                          <button
+                            class="btn btn-danger"
+                            type="button"
+                            @click="$emit('eliminar-producto', producto.id)"
+                          >
+                            X
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="text-end">
+                    Total pagar: <span class="fw-bold">${{ totalPagar }}</span>
+                  </p>
+                  <button
+                    class="btn btn-dark w-100 mt-3 p-2"
+                    @click="$emit('vaciar-carrito')"
+                  >
+                    Vaciar Carrito
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </nav>
+          </nav>
+        </div>
       </div>
       <!--.row-->
 
